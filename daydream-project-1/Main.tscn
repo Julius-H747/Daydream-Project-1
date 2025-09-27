@@ -169,7 +169,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_uu6xs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgr22"]
-size = Vector2(57, 22)
+size = Vector2(57, 24)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trn2v"]
 
@@ -183,7 +183,7 @@ tile_set = SubResource("TileSet_r0du0")
 script = ExtResource("2_cm0pq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(673.5, 276)
+position = Vector2(673.5, 277)
 shape = SubResource("RectangleShape2D_lgr22")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
