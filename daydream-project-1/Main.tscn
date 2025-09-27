@@ -187,6 +187,7 @@ position = Vector2(673.5, 277)
 shape = SubResource("RectangleShape2D_lgr22")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
 script = ExtResource("3_fos0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
