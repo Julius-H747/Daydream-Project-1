@@ -582,10 +582,10 @@ script = ExtResource("1_blqjs")
 
 [node name="Camera2D" type="Camera2D" parent="Player 2"]
 position = Vector2(566, 410)
-zoom = Vector2(1.5, 1.5)
-limit_left = -3
+zoom = Vector2(2, 2)
+limit_left = 0
 limit_top = 3
-limit_right = 1149
+limit_right = 1152
 limit_bottom = 651
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0

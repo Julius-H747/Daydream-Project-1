@@ -21,3 +21,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	get_tree().change_scene_to_file("res://shop.tscn")# Replace with function body.
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://cave_entrence.tscn") # Replace with function body.
