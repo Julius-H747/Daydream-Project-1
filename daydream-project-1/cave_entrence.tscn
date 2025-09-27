@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=4 uid="uid://bh1brdnglrkh5"]
+[gd_scene load_steps=35 format=4 uid="uid://bh1brdnglrkh5"]
 
 [ext_resource type="Texture2D" uid="uid://cj0evmu078g7n" path="res://images.jpg" id="1_50ptl"]
+[ext_resource type="PackedScene" uid="uid://bah2wbtadcu8t" path="res://HUD.tscn" id="1_et184"]
 [ext_resource type="Texture2D" uid="uid://cblbxs8ho67hs" path="res://dcd65b1ec18c142def998b8a728c7a8f.png" id="2_bdp4m"]
 [ext_resource type="Texture2D" uid="uid://d31rh27el5fj6" path="res://tilemap_packed.png" id="3_c0bbc"]
 [ext_resource type="Texture2D" uid="uid://1ybjfanjrmpl" path="res://Cave (1).png" id="4_oyvav"]
@@ -5043,6 +5044,8 @@ radius = 25.0
 height = 104.0
 
 [node name="Node" type="Node"]
+
+[node name="HUD" parent="." instance=ExtResource("1_et184")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -66.0
