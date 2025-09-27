@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://dy1sibrq5iffd"]
+[gd_scene load_steps=53 format=4 uid="uid://dy1sibrq5iffd"]
 
 [ext_resource type="Script" uid="uid://buqyb7g6ubk33" path="res://player_2.gd" id="1_blqjs"]
 [ext_resource type="Texture2D" uid="uid://bs5v25fextudu" path="res://_Idle.png" id="2_gmb2m"]
@@ -572,6 +572,9 @@ size = Vector2(33, 40.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lah5"]
 size = Vector2(121, 37)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myf4l"]
+size = Vector2(48, 80)
+
 [node name="shop" type="Node"]
 
 [node name="Player 2" type="CharacterBody2D" parent="."]
@@ -631,5 +634,11 @@ offset_top = 363.0
 offset_right = 103.0
 offset_bottom = 394.0
 text = "open shop"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(26, 361)
+shape = SubResource("RectangleShape2D_myf4l")
 
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="Player 2" method="_on_area_2d_body_entered"]
