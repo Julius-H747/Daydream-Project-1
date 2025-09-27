@@ -94,7 +94,6 @@ text = "𝕻𝖍𝖆𝖓𝖙𝖔𝖒 𝕶𝖓𝖎𝖌𝖍𝖙"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(584, 332)
-zoom = Vector2(1.5, 1.5)
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
