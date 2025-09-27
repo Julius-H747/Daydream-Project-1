@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-	
+var roll = false
+var side = false
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -20,17 +22,33 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if velocity.y == 0:
-		if velocity.x != 0:
-			$AnimatedSprite2D.animation = "walk"
-		# See the note below about the following boolean assignment.
+	if Input.is_action_just_pressed("Rroll"):
+		roll = true
+		side = true
+	if Input.is_action_just_pressed("Lroll"):
+		roll = true
+		side = false
+	if roll:
+		if side:
 			$AnimatedSprite2D.flip_h = velocity.x < 0
-			$AnimatedSprite2D.play()
+			$AnimatedSprite2D.play("roll")
 		else:
-			$AnimatedSprite2D.animation = "idle"
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+			$AnimatedSprite2D.play("roll")
+			if $AnimatedSprite2D.animation_finished:
+				roll = false
 	else:
-		$AnimatedSprite2D.animation = "jump"
-		if not "-" in str(velocity.y):
-			$AnimatedSprite2D.animation = "fall"
+		if velocity.y == 0:
+			if velocity.x != 0:
+				$AnimatedSprite2D.animation = "walk"
+			# See the note below about the following boolean assignment.
+				$AnimatedSprite2D.flip_h = velocity.x < 0
+				$AnimatedSprite2D.play()
+			else:
+				$AnimatedSprite2D.animation = "idle"
+		else:
+			$AnimatedSprite2D.animation = "jump"
+			if not "-" in str(velocity.y):
+				$AnimatedSprite2D.animation = "fall"
 	move_and_slide()
 	
