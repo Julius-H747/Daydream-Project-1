@@ -570,10 +570,10 @@ animations = [{
 size = Vector2(33, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lah5"]
-size = Vector2(121, 37)
+size = Vector2(124, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myf4l"]
-size = Vector2(48, 80)
+size = Vector2(50, 81)
 
 [node name="shop" type="Node"]
 
@@ -624,7 +624,7 @@ shape = SubResource("RectangleShape2D_fgaav")
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
-position = Vector2(73.5, 425.5)
+position = Vector2(72, 429.5)
 shape = SubResource("RectangleShape2D_6lah5")
 
 [node name="open_shop" type="Button" parent="."]
@@ -635,10 +635,10 @@ offset_right = 103.0
 offset_bottom = 394.0
 text = "open shop"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(26, 361)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(25, 362.5)
 shape = SubResource("RectangleShape2D_myf4l")
 
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="Player 2" method="_on_area_2d_body_entered"]
