@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dy1sibrq5iffd"]
+[gd_scene load_steps=66 format=4 uid="uid://dy1sibrq5iffd"]
 
 [ext_resource type="Script" uid="uid://buqyb7g6ubk33" path="res://player_2.gd" id="1_blqjs"]
 [ext_resource type="Texture2D" uid="uid://bs5v25fextudu" path="res://_Idle.png" id="2_gmb2m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://yb1r3vkldt2b" path="res://shop_dude.gd" id="4_6lah5"]
 [ext_resource type="Texture2D" uid="uid://cup3b0kv8rpy7" path="res://Idle (32x32).png" id="4_fgaav"]
 [ext_resource type="Texture2D" uid="uid://c7cdxbifht7sl" path="res://_Jump.png" id="4_p5a0g"]
+[ext_resource type="Texture2D" uid="uid://bodrqo2e4cdf4" path="res://_Roll.png" id="5_p5a0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_763b7"]
 atlas = ExtResource("2_myf4l")
@@ -69,6 +70,54 @@ region = Rect2(120, 0, 120, 80)
 atlas = ExtResource("4_p5a0g")
 region = Rect2(240, 0, 120, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_acxsc"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3iel"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2807j"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7exk"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db3q1"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f8xc"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4q3a"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv3hj"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lccd8"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckaty"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugyvi"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(1200, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdli5"]
+atlas = ExtResource("5_p5a0g")
+region = Rect2(1320, 0, 120, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fos0i"]
 atlas = ExtResource("3_8kdgp")
 region = Rect2(0, 0, 120, 80)
@@ -120,7 +169,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fall",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,6 +219,47 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acxsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3iel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2807j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7exk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db3q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f8xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4q3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv3hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lccd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckaty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugyvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdli5")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -594,7 +684,9 @@ position_smoothing_speed = 7.0
 position = Vector2(613.5, 388.94)
 scale = Vector2(0.9583333, 1.1734998)
 sprite_frames = SubResource("SpriteFrames_myf4l")
-animation = &"fall"
+animation = &"roll"
+frame = 4
+frame_progress = 0.794793
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player 2"]
 position = Vector2(611, 411.99997)
