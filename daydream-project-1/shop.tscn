@@ -681,7 +681,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player 2"]
-position = Vector2(613.5, 388.94)
+position = Vector2(617, 394.99997)
 scale = Vector2(0.9583333, 1.1734998)
 sprite_frames = SubResource("SpriteFrames_myf4l")
 animation = &"roll"
