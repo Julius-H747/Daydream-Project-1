@@ -597,3 +597,5 @@ limit_top = 209
 limit_right = 1152
 limit_bottom = 648
 position_smoothing_enabled = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
