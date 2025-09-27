@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c2yq6pxerd7t0"]
+[gd_scene load_steps=10 format=4 uid="uid://c2yq6pxerd7t0"]
 
 [ext_resource type="Texture2D" uid="uid://d31rh27el5fj6" path="res://tilemap_packed.png" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://cwtu7403ngqw4" path="res://area_2d.gd" id="2_cm0pq"]
@@ -173,6 +173,9 @@ size = Vector2(57, 24)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trn2v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm0pq"]
+size = Vector2(20, 40)
+
 [node name="Node" type="Node"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -186,21 +189,21 @@ script = ExtResource("2_cm0pq")
 position = Vector2(673.5, 277)
 shape = SubResource("RectangleShape2D_lgr22")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 motion_mode = 1
 script = ExtResource("3_fos0i")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(83.5, 90.25001)
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(569.5, 585.25)
 scale = Vector2(0.1640625, 0.26953137)
 texture = ExtResource("4_3dxm6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(83, 90)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(569, 585)
 shape = SubResource("CapsuleShape2D_trn2v")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(83, 91)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(569, 586)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -208,4 +211,10 @@ limit_right = 1152
 limit_bottom = 648
 position_smoothing_enabled = true
 
-[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1142, 151)
+shape = SubResource("RectangleShape2D_cm0pq")
+
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
