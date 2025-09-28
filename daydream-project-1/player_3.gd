@@ -274,6 +274,12 @@ func test_distance_based_attack():
 				break
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	get_tree().change_scene_to_file("res://boss_room.tscn") # Replace with function body.
+=======
+>>>>>>> Stashed changes
 	print("Body entered area: ", body.name, " - Groups: ", body.get_groups())
 	
 	var layer3 = get_node_or_null("TileMapLayer3")
@@ -391,3 +397,7 @@ func heal(amount):
 	if player_health > max_health:
 		player_health = max_health
 	print("Player healed for ", amount, ". Health: ", target_health)
+<<<<<<< Updated upstream
+=======
+>>>>>>> d7fcd436c8d164621a6daeaf44dcce813980c8ed
+>>>>>>> Stashed changes

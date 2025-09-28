@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://dy1sibrq5iffd"]
+[gd_scene load_steps=75 format=4 uid="uid://dy1sibrq5iffd"]
 
 [ext_resource type="Script" uid="uid://buqyb7g6ubk33" path="res://player_2.gd" id="1_blqjs"]
 [ext_resource type="Texture2D" uid="uid://c8c62yo8rr0ji" path="res://tilemap_packed_1.png" id="1_xqmyw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bodrqo2e4cdf4" path="res://_Roll.png" id="5_p5a0g"]
 [ext_resource type="Texture2D" uid="uid://dml4xmk2cibd3" path="res://world_tileset.png" id="7_p5a0g"]
 [ext_resource type="Texture2D" uid="uid://dhsp4iq0lii1f" path="res://Dungeon Tile Set.png" id="9_sw5c6"]
+[ext_resource type="PackedScene" uid="uid://bah2wbtadcu8t" path="res://HUD.tscn" id="12_msgp6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sw5c6"]
 texture = ExtResource("1_xqmyw")
@@ -1046,6 +1047,8 @@ shape = SubResource("RectangleShape2D_myf4l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
 position = Vector2(317, 429)
 shape = SubResource("RectangleShape2D_sw5c6")
+
+[node name="HUD" parent="." instance=ExtResource("12_msgp6")]
 
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="Player 2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="exit" to="Player 2" method="_on_exit_body_entered"]
