@@ -382,7 +382,7 @@ func respawn_player():
 	invincible_timer = 0.0
 	print("Player respawned with full health!")
 
-# Optional: Add a healing function for testing
+
 func heal(amount):
 	target_health += amount
 	player_health += amount
