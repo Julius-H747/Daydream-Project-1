@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bh1brdnglrkh5"]
+[gd_scene load_steps=35 format=4 uid="uid://bh1brdnglrkh5"]
 
 [ext_resource type="Texture2D" uid="uid://cj0evmu078g7n" path="res://images.jpg" id="1_50ptl"]
 [ext_resource type="Texture2D" uid="uid://cblbxs8ho67hs" path="res://dcd65b1ec18c142def998b8a728c7a8f.png" id="2_bdp4m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c1xwv13v11mgk" path="res://player4.gd" id="5_oyvav"]
 [ext_resource type="Texture2D" uid="uid://bs5v25fextudu" path="res://_Idle.png" id="6_et184"]
 [ext_resource type="Texture2D" uid="uid://bka6m8jg8k5ru" path="res://_Run.png" id="7_q1rxd"]
+[ext_resource type="PackedScene" uid="uid://bah2wbtadcu8t" path="res://HUD.tscn" id="8_et184"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et184"]
 texture = ExtResource("2_bdp4m")
@@ -5081,3 +5082,5 @@ frame_progress = 0.92034864
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-24, 80)
 shape = SubResource("CapsuleShape2D_74v7b")
+
+[node name="HUD" parent="." instance=ExtResource("8_et184")]

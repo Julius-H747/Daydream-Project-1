@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c2yq6pxerd7t0"]
+[gd_scene load_steps=36 format=4 uid="uid://c2yq6pxerd7t0"]
 
 [ext_resource type="Texture2D" uid="uid://d31rh27el5fj6" path="res://tilemap_packed.png" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://cwtu7403ngqw4" path="res://area_2d.gd" id="2_cm0pq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bka6m8jg8k5ru" path="res://_Run.png" id="4_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://bs5v25fextudu" path="res://_Idle.png" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://ugxkdbvxjvdk" path="res://cave_entrence.gd" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://bah2wbtadcu8t" path="res://HUD.tscn" id="7_lgr22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uu6xs"]
 texture = ExtResource("1_glv2v")
@@ -484,23 +485,23 @@ script = ExtResource("2_cm0pq")
 position = Vector2(673.5, 277)
 shape = SubResource("RectangleShape2D_lgr22")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(488, 400)
 motion_mode = 1
 script = ExtResource("3_fos0i")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(85.00001, 84.00001)
 scale = Vector2(1, 1.272)
 sprite_frames = SubResource("SpriteFrames_20pc6")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(80, 111)
 shape = SubResource("CapsuleShape2D_trn2v")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(83, 97)
 zoom = Vector2(2, 2)
 limit_left = 0
@@ -520,5 +521,7 @@ script = ExtResource("6_3dxm6")
 position = Vector2(1142, 152.5)
 shape = SubResource("RectangleShape2D_trn2v")
 
-[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="CharacterBody2D" method="_on_area_2d_2_body_entered"]
+[node name="HUD" parent="." instance=ExtResource("7_lgr22")]
+
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Player" method="_on_area_2d_2_body_entered"]

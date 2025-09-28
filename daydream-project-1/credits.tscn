@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5o8l8yg1adym"]
+
+[ext_resource type="Script" uid="uid://omakdp6t7nog" path="res://credits.gd" id="1_c1t8d"]
+[ext_resource type="Texture2D" uid="uid://cblbxs8ho67hs" path="res://dcd65b1ec18c142def998b8a728c7a8f.png" id="1_nm7lk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1t8d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 653.0
+texture = ExtResource("1_nm7lk")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 651.0
+text = "Credits
+
+Julius Hold
+Aditya Menon
+Rohan Flynn"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 442.0
+offset_right = 762.0
+offset_bottom = 473.0
+text = "Back"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 327)
