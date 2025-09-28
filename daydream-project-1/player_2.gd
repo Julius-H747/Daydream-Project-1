@@ -54,3 +54,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_exit_body_entered(body: CharacterBody2D) -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")# Replace with function body.
+
+
+func _on_open_shop_pressed() -> void:
+	get_tree().change_scene_to_file("res://shop_menu.tscn") # Replace with function body.
