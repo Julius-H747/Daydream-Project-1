@@ -34,3 +34,7 @@ func _physics_process(delta: float) -> void:
 		if not "-" in str(velocity.y):
 			$AnimatedSprite2D.animation = "fall"
 	move_and_slide()
+
+
+func _on_soul_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

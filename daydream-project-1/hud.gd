@@ -10,4 +10,4 @@ func _ready() -> void:
 func on_soul_collected():
 	soul_count += 1
 	print("Soul Collected", soul_count)
-	coin_label.text = "Souls: " + str(soul_count)
+	soul_label.text = "Souls: " + str(soul_count)

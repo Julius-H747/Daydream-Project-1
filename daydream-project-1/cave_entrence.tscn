@@ -5045,7 +5045,7 @@ height = 104.0
 
 [node name="Node" type="Node"]
 
-[node name="HUD" parent="." instance=ExtResource("1_et184")]
+[node name="HUD" parent="." groups=["Souls"] instance=ExtResource("1_et184")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -66.0

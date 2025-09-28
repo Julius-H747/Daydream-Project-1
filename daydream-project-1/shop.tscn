@@ -668,7 +668,7 @@ size = Vector2(50, 81)
 
 [node name="shop" type="Node"]
 
-[node name="HUD" parent="." instance=ExtResource("1_xqmyw")]
+[node name="HUD" parent="." groups=["Souls"] instance=ExtResource("1_xqmyw")]
 
 [node name="Player 2" type="CharacterBody2D" parent="."]
 script = ExtResource("1_blqjs")
