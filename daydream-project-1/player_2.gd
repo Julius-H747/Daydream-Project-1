@@ -51,4 +51,6 @@ func _physics_process(delta: float) -> void:
 			if not "-" in str(velocity.y):
 				$AnimatedSprite2D.animation = "fall"
 	move_and_slide()
-	
+
+func _on_exit_body_entered(body: CharacterBody2D) -> void:
+	get_tree().change_scene_to_file("res://Main.tscn")# Replace with function body.

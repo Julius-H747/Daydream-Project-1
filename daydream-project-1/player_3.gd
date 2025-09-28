@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+var attack = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -21,16 +21,28 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if velocity.y == 0:
-		if velocity.x != 0:
-			$AnimatedSprite2D.animation = "walk"
-		# See the note below about the following boolean assignment.
-			$AnimatedSprite2D.flip_h = velocity.x < 0
-			$AnimatedSprite2D.play()
-		else:
-			$AnimatedSprite2D.animation = "idle"
+	if Input.is_action_just_pressed("z"):
+		attack = true
+	if attack:
+		$AnimatedSprite2D.play("attack")
+		if attack and $AnimatedSprite2D.frame == 3:
+			attack = false
 	else:
-		$AnimatedSprite2D.animation = "jump"
-		if not "-" in str(velocity.y):
-			$AnimatedSprite2D.animation = "fall"
+		if velocity.y == 0:
+			if velocity.x != 0:
+				$AnimatedSprite2D.animation = "walk"
+			# See the note below about the following boolean assignment.
+				$AnimatedSprite2D.flip_h = velocity.x < 0
+				$AnimatedSprite2D.play()
+			else:
+				$AnimatedSprite2D.animation = "idle"
+		else:
+			$AnimatedSprite2D.animation = "jump"
+			if not "-" in str(velocity.y):
+				$AnimatedSprite2D.animation = "fall"
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	$TileMapLayer3.set_layer_enabled(1, false) # Replace with function body.
+	$TileMapLayer4.set_layer_enabled(1, true)
