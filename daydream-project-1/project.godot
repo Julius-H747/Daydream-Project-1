@@ -15,9 +15,14 @@ run/main_scene="uid://d0i5xutsn7tck"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Player3="*res://player_3.gd"
+
 [global_group]
 
 Souls=""
+enemy=""
 
 [input]
 

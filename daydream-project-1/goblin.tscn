@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7nkyhnryoe83"]
+[gd_scene load_steps=18 format=3 uid="uid://b7nkyhnryoe83"]
 
 [ext_resource type="Script" uid="uid://qafjvdc0m3lt" path="res://Goblin.gd" id="1_u6mjv"]
 [ext_resource type="Texture2D" uid="uid://cf0y8lnue0o6l" path="res://Monster_Creatures_Fantasy(Version 1.3)/Monster_Creatures_Fantasy(Version 1.3)/Goblin/Attack3.png" id="2_vu5tg"]
@@ -98,6 +98,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6mjv"]
+size = Vector2(41, 47)
+
 [node name="goblin" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -116,3 +119,9 @@ rect = Rect2(-10, -10, 43, 51)
 position = Vector2(165, 372)
 sprite_frames = SubResource("SpriteFrames_f1uny")
 animation = &"walk"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
+position = Vector2(166, 373.5)
+shape = SubResource("RectangleShape2D_u6mjv")

@@ -603,7 +603,7 @@ animations = [{
 size = Vector2(66, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q41cu"]
-size = Vector2(46, 16)
+size = Vector2(69.5, 16)
 
 [node name="Node" type="Node"]
 metadata/_edit_horizontal_guides_ = [119.0]
@@ -663,7 +663,7 @@ position = Vector2(578, 19)
 [node name="Mushroom3" parent="." instance=ExtResource("10_c2qy3")]
 position = Vector2(211, -146)
 
-[node name="Mushroom4" parent="." instance=ExtResource("10_c2qy3")]
+[node name="Mushroom4" parent="." groups=["enemy"] instance=ExtResource("10_c2qy3")]
 position = Vector2(-62, 141)
 
 [node name="Player 3" type="CharacterBody2D" parent="."]
@@ -691,5 +691,7 @@ position_smoothing_enabled = true
 [node name="Area2D" type="Area2D" parent="Player 3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player 3/Area2D"]
-position = Vector2(94, 493)
+position = Vector2(85.75, 492)
 shape = SubResource("RectangleShape2D_q41cu")
+
+[connection signal="body_entered" from="Skeleton2" to="Player 3" method="_on_skeleton_2_body_entered"]
