@@ -119,33 +119,56 @@ func check_enemy_collisions():
 func damage_enemy(enemy):
 	var enemy_name = enemy.name
 	
+	# Initialize enemy health if not tracked yet
 	if not enemy_health.has(enemy_name):
 		enemy_health[enemy_name] = 3
 		print("New enemy tracked: ", enemy_name, " with 3 health")
 	
+	# Reduce enemy health
 	enemy_health[enemy_name] -= 1
 	print("Hit enemy: ", enemy_name, " - Health remaining: ", enemy_health[enemy_name])
 	
-	update_enemy_health_bar(enemy)
-	
+	# Flash enemy red
 	flash_enemy_red(enemy)
 	
+	# Check if enemy should die
 	if enemy_health[enemy_name] <= 0:
 		print("Enemy killed: ", enemy_name)
-		enemy_health.erase(enemy_name)
-		remove_enemy_health_bar(enemy)
-		enemy.visible = false
-		enemy.queue_free()
+		kill_enemy(enemy)
 	else:
 		print("Enemy ", enemy_name, " survives with ", enemy_health[enemy_name], " health")
 
+func kill_enemy(enemy):
+	var enemy_name = enemy.name
+	
+	# Remove from tracking
+	enemy_health.erase(enemy_name)
+	
+	# Remove health bar if it exists
+	remove_enemy_health_bar(enemy)
+	
+	# Kill the enemy
+	enemy.queue_free()
+	print("Enemy ", enemy_name, " has been destroyed!")
+
 func flash_enemy_red(enemy):
-	if enemy.has_method("modulate"):
-		var original_color = enemy.modulate
-		enemy.modulate = Color.RED
-		await get_tree().create_timer(0.1).timeout
-		if is_instance_valid(enemy):
-			enemy.modulate = original_color
+	if not is_instance_valid(enemy):
+		return
+		
+	var animated_sprite = enemy.get_node_or_null("AnimatedSprite2D")
+	if not animated_sprite:
+		animated_sprite = enemy.get_node_or_null("Sprite2D")
+	if not animated_sprite:
+		# Try to use the enemy itself if it has modulate
+		if enemy.has_method("set_modulate"):
+			animated_sprite = enemy
+	
+	if animated_sprite:
+		var original_color = animated_sprite.modulate
+		animated_sprite.modulate = Color.RED
+		await get_tree().create_timer(0.2).timeout
+		if is_instance_valid(animated_sprite):
+			animated_sprite.modulate = original_color
 
 func check_enemy_damage():
 	if invincible:
@@ -167,7 +190,7 @@ func take_damage(damage_amount, enemy = null):
 	
 	print("TAKING DAMAGE: ", damage_amount)
 	
-	# Reduce BOTH target health AND current health immediately
+	# Reduce health
 	target_health -= damage_amount
 	player_health -= damage_amount
 	
@@ -194,14 +217,14 @@ func flash_player_red():
 	if animated_sprite:
 		var original_color = animated_sprite.modulate
 		animated_sprite.modulate = Color.RED
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.3).timeout
 		if is_instance_valid(animated_sprite):
 			animated_sprite.modulate = original_color
+		print("Player flashed red!")
 
 func player_died():
 	print("Game Over! Player will respawn or return to main menu...")
 	
-	# Keep the health bar visible but show death message
 	show_death_message()
 	
 	await get_tree().create_timer(3.0).timeout
@@ -244,10 +267,11 @@ func test_distance_based_attack():
 	var all_enemies = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("enemy")
 	
 	for enemy in all_enemies:
-		var distance = global_position.distance_to(enemy.global_position)
-		if distance < 80:
-			damage_enemy(enemy)
-			break
+		if is_instance_valid(enemy):
+			var distance = global_position.distance_to(enemy.global_position)
+			if distance < 80:
+				damage_enemy(enemy)
+				break
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	print("Body entered area: ", body.name, " - Groups: ", body.get_groups())
@@ -275,7 +299,7 @@ func create_enemy_health_bar(enemy):
 	health_container.add_child(health_bg)
 	
 	var health_fill = ColorRect.new()
-	health_fill.color = Color.RED
+	health_fill.color = Color.GREEN
 	health_fill.position = Vector2(1, 1)
 	health_fill.size = Vector2(58, 10)
 	health_container.add_child(health_fill)
@@ -356,7 +380,6 @@ func respawn_player():
 	target_health = max_health
 	invincible = false
 	invincible_timer = 0.0
-	
 	print("Player respawned with full health!")
 
 # Optional: Add a healing function for testing
