@@ -17,20 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-<<<<<<< Updated upstream
-Player3="*res://player_3.gd"
-=======
-<<<<<<< HEAD
-Globals="*res://globals.gd"
-=======
-Player3="*res://player_3.gd"
->>>>>>> d7fcd436c8d164621a6daeaf44dcce813980c8ed
->>>>>>> Stashed changes
-
-[global_group]
-
-Souls=""
-enemy=""
+<<<<<<<UpdatedupstreamPlayer3="*res://player_3.gd"
 
 [input]
 
